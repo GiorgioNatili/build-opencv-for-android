@@ -5,10 +5,13 @@ NDK_ROOT="${1:-${NDK_ROOT}}"
 #declare -a ANDROID_ABI_LIST=("x86" "x86_64" "armeabi-v7a with NEON" "arm64-v8a")
 declare -a ANDROID_ABI_LIST=("x86" "x86_64" "armeabi")
 
+### path find up
+PHYS_DIR=`pwd -P`
+RESULT=$PHYS_DIR/$TARGET_FILE
+
 ### path setup
-SCRIPT=$(readlink -f $0)
-WD=`dirname $SCRIPT`
-OPENCV_ROOT="${WD}/opencv"
+WD=$RESULT
+OPENCV_ROOT="${RESULT}/opencv"
 N_JOBS=${N_JOBS:-4}
 
 ### Download android-cmake
